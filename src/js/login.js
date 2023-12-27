@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const formData = new FormData(form);
 
+    let data = {
+      username: document.getElementsByName("username")[0].value,
+    };
+
+    console.log(data);
+
     fetch("./php/login.php", {
       method: "POST",
       body: formData,
@@ -14,7 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         if (data.status === "success") {
           alert(data.message);
-          window.location.href = "../index.html";
+          console.log(data);
+          if (data.username != "admin") {
+            window.location.href = "./index.html";
+          } else {
+            window.location.href = "./admin/index.php";
+          }
         } else {
           alert(data.message);
         }

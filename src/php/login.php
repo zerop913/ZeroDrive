@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Проверка пароля
         if (password_verify($password, $hashed_password)) {
-            echo json_encode(array("status" => "success", "message" => "Добро пожаловать, $username!"));
+            echo json_encode(array("status" => "success", "message" => "Добро пожаловать, $username!", "username" => $username));
         } else {
             echo json_encode(array("status" => "error", "message" => "Неправильный логин или пароль."));
         }
