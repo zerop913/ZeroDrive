@@ -15,7 +15,7 @@ document.getElementById("searchInput").addEventListener("input", function () {
   };
   xhr.open(
     "GET",
-    `search.php?query=${searchValue}&filter=${filterValue}`,
+    `php/search.php?query=${searchValue}&filter=${filterValue}`,
     true
   );
   xhr.send();

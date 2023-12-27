@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Поиск инструкторов</title>
-    <link rel="stylesheet" href="./css/output.css" />
+    <title>Админ-панель</title>
+    <link rel="stylesheet" href="../css/output.css" />
   </head>
   <body class="relative">
-    <img src="./assets/register/title-background.png" alt="" class="w-full" />
+    <img src="../assets/register/title-background.png" alt="" class="w-full" />
     <header class="absolute top-0 left-0 right-0 container mx-auto mt-[50px]">
       <div class="flex justify-between items-center">
-        <img src="./assets/register/Logo.png" alt="logo img" />
+        <img src="../assets/register/Logo.png" alt="logo img" />
         <div class="flex items-center gap-[45px]">
           <a href="#" class="font-daysOne text-base">ГЛАВНАЯ</a>
           <a href="#" class="font-daysOne text-base">КУРСЫ</a>
@@ -46,45 +46,21 @@
             fill="#1D1D1D"
           />
         </svg>
-        <h1 class="font-daysOne text-5xl">Поиск инструкторов</h1>
+        <h1 class="font-daysOne text-5xl">Админ-панель</h1>
       </div>
     </header>
     <main class="flex justify-center mt-11">
-      <div class="container mx-auto">
-        <label for="searchFilter" class="text-white font-daysOne text-2xl mb-4"
-          >Выберите параметр поиска:</label
-        >
-        <select
-          id="searchFilter"
-          class="w-full h-[50px] border-2 border-[#D7D7D7] rounded-xl font-rubikR text-xl p-2 text-[#616161] bg-white mb-8"
-        >
-          <option value="all">Без фильтра</option>
-          <option value="fio">По ФИО</option>
-          <option value="number">По номеру машины</option>
-        </select>
-
-        <label
-          for="searchInput"
-          class="text-white font-daysOne text-2xl"
-        ></label>
-        <input
-          type="text"
-          id="searchInput"
-          class="w-full h-[50px] border-2 border-[#D7D7D7] rounded-xl font-rubikR text-xl p-5 text-[#616161] bg-white mb-8"
-        />
-
-        <div id="searchResults" class="grid grid-cols-1 gap-8 mt-8"></div>
-      </div>
+        
     </main>
     <footer class="mt-12 relative">
       <img
-        src="./assets/register/footer-background.png"
+        src="../assets/register/footer-background.png"
         alt=""
         class="w-full absolute top-0 left-0"
       />
       <div class="grid grid-cols-3 relative z-10 container pt-32 gap-28">
         <div>
-          <img src="./assets/register/Logo-footer.png" alt="Logo footer" />
+          <img src="../assets/register/Logo-footer.png" alt="Logo footer" />
           <p class="mt-7 font-rubikR text-lg text-white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus
@@ -190,6 +166,6 @@
         </div>
       </div>
     </footer>
-    <script src="./js/app.js"></script>
+    <script src="./admin.js"></script>
   </body>
 </html>
