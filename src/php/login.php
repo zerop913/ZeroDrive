@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -15,13 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $email = $_POST['email'];
 
-    // Проверка, чтобы поля не были пустыми
     if (empty($username) || empty($password) || empty($email)) {
         echo json_encode(array("status" => "error", "message" => "Все поля должны быть заполнены."));
         exit();
     }
 
-    // Получение хешированного пароля из базы данных
     $get_password_query = "SELECT password FROM users WHERE username='$username'";
     $result = $conn->query($get_password_query);
 
@@ -29,8 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         $hashed_password = $row['password'];
 
-        // Проверка пароля
         if (password_verify($password, $hashed_password)) {
+            $_SESSION['username'] = $username;
+
             echo json_encode(array("status" => "success", "message" => "Добро пожаловать, $username!", "username" => $username));
         } else {
             echo json_encode(array("status" => "error", "message" => "Неправильный логин или пароль."));

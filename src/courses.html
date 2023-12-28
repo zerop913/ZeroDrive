@@ -3,25 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Админ-панель</title>
-    <link rel="stylesheet" href="../css/output.css" />
+    <title>Доступные курсы</title>
+    <link rel="stylesheet" href="./css/output.css" />
+    <style>
+      .course-card {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .course-card:hover {
+        transform: scale(1.05);
+      }
+    </style>
   </head>
   <body class="relative">
-    <img src="../assets/register/title-background.png" alt="" class="w-full" />
+    <img src="./assets/register/title-background.png" alt="" class="w-full" />
     <header class="absolute top-0 left-0 right-0 container mx-auto mt-[50px]">
       <div class="flex justify-between items-center">
-        <img src="../assets/register/Logo.png" alt="logo img" />
+        <img src="./assets/register/Logo.png" alt="logo img" />
         <div class="flex items-center gap-[45px]">
-          <a href="#" class="font-daysOne text-base">ГЛАВНАЯ</a>
-          <a href="#" class="font-daysOne text-base">КУРСЫ</a>
+          <a href="./search.html" class="font-daysOne text-base">ГЛАВНАЯ</a>
+          <a href="./courses.html" class="font-daysOne text-base">КУРСЫ</a>
           <a href="#" class="font-daysOne text-base">БЛОГ</a>
           <a href="#" class="font-daysOne text-base">О НАС</a>
         </div>
+        <?php session_start(); ?>
+        <?php if (isset($_SESSION['username'])) { ?>
         <button
+          onclick='location.href="./admin/index.html"'
+          class="w-48 h-[50px] border-double border-4 border-[#F24406] rounded-xl font-daysOne text-lg text-center duration-300 ease-in-out hover:bg-[#F24406] hover:border-4 hover:border-white hover:text-white"
+        >
+          <?php echo $_SESSION['username'] ?>
+        </button>
+        <?php } else { ?>
+        <button
+          onclick='location.href="./register.html"'
           class="w-48 h-[50px] border-double border-4 border-[#F24406] rounded-xl font-daysOne text-lg text-center duration-300 ease-in-out hover:bg-[#F24406] hover:border-4 hover:border-white hover:text-white"
         >
           Регистрация
         </button>
+        <?php } ?>
       </div>
       <div class="pt-24 flex items-center gap-4">
         <svg
@@ -46,21 +66,24 @@
             fill="#1D1D1D"
           />
         </svg>
-        <h1 class="font-daysOne text-5xl">Админ-панель</h1>
+        <h1 class="font-daysOne text-5xl">Доступные курсы</h1>
       </div>
     </header>
     <main class="flex justify-center mt-11">
-        
+      <div
+        id="coursesList"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      ></div>
     </main>
     <footer class="mt-12 relative">
       <img
-        src="../assets/register/footer-background.png"
+        src="./assets/register/footer-background.png"
         alt=""
         class="w-full absolute top-0 left-0"
       />
       <div class="grid grid-cols-3 relative z-10 container pt-32 gap-28">
         <div>
-          <img src="../assets/register/Logo-footer.png" alt="Logo footer" />
+          <img src="./assets/register/Logo-footer.png" alt="Logo footer" />
           <p class="mt-7 font-rubikR text-lg text-white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus
@@ -166,6 +189,6 @@
         </div>
       </div>
     </footer>
-    <script src="./admin.js"></script>
+    <script src="./js/courses.js"></script>
   </body>
 </html>

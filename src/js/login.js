@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
           alert(data.message);
           console.log(data);
           if (data.username != "admin") {
-            window.location.href = "./index.html";
+            window.location.href = "./search.html";
           } else {
-            window.location.href = "./admin/index.php";
+            window.location.href = "./admin/index.html";
           }
         } else {
           alert(data.message);

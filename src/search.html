@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Авторизация</title>
+    <title>Поиск инструкторов</title>
     <link rel="stylesheet" href="./css/output.css" />
   </head>
   <body class="relative">
@@ -17,12 +17,22 @@
           <a href="#" class="font-daysOne text-base">БЛОГ</a>
           <a href="#" class="font-daysOne text-base">О НАС</a>
         </div>
+        <?php session_start(); ?>
+        <?php if (isset($_SESSION['username'])) { ?>
+        <button
+          onclick='location.href="./admin/index.html"'
+          class="w-48 h-[50px] border-double border-4 border-[#F24406] rounded-xl font-daysOne text-lg text-center duration-300 ease-in-out hover:bg-[#F24406] hover:border-4 hover:border-white hover:text-white"
+        >
+          <?php echo $_SESSION['username'] ?>
+        </button>
+        <?php } else { ?>
         <button
           onclick='location.href="./register.html"'
           class="w-48 h-[50px] border-double border-4 border-[#F24406] rounded-xl font-daysOne text-lg text-center duration-300 ease-in-out hover:bg-[#F24406] hover:border-4 hover:border-white hover:text-white"
         >
           Регистрация
         </button>
+        <?php } ?>
       </div>
       <div class="pt-24 flex items-center gap-4">
         <svg
@@ -47,61 +57,35 @@
             fill="#1D1D1D"
           />
         </svg>
-        <h1 class="font-daysOne text-5xl">Авторизация</h1>
+        <h1 class="font-daysOne text-5xl">Поиск инструкторов</h1>
       </div>
     </header>
     <main class="flex justify-center mt-11">
-      <form action="./php/login.php" method="POST" autocomplete="on">
-        <div class="mx-11 my-14">
-          <div>
-            <p class="font-rubikB text-lg text-[#4D4D4D]">Логин</p>
-            <input
-              type="text"
-              class="w-full h-[60px] border-2 border-[#4D4D4D] rounded-xl font-rubikR text-xl p-5 text-[#575757]"
-              placeholder="Введите логин"
-              autocomplete="username"
-              name="username"
-            />
-          </div>
-          <div class="mt-6">
-            <p class="font-rubikB text-lg text-[#4D4D4D]">Почта</p>
-            <input
-              type="email"
-              class="w-full h-[60px] border-2 border-[#4D4D4D] rounded-xl font-rubikR text-xl p-5 text-[#575757]"
-              placeholder="Введите почту"
-              autocomplete="email"
-              name="email"
-            />
-          </div>
-          <div class="mt-6">
-            <p class="font-rubikB text-lg text-[#4D4D4D]">Пароль</p>
-            <input
-              type="password"
-              class="w-full h-[60px] border-2 border-[#4D4D4D] rounded-xl font-rubikR text-xl p-5 text-[#575757]"
-              placeholder="Введите пароль"
-              autocomplete="current-password"
-              name="password"
-            />
-          </div>
-        </div>
-        <div class="flex justify-center mt-8">
-          <button
-            class="w-[823px] h-[61px] rounded-xl bg-[#F24406] border-black border-2 font-daysOne text-xl text-white text-center hover:bg-[#FA602A] duration-300 ease-in-out"
-          >
-            ВОЙТИ
-          </button>
-        </div>
-        <div class="flex justify-center mt-12">
-          <p class="font-daysOne text-xl text-black text-center">
-            Нет аккаунта?
-            <a
-              href="./register.html"
-              class="font-daysOne text-xl text-[#F24406] text-center"
-              >Регистрация</a
-            >
-          </p>
-        </div>
-      </form>
+      <div class="container mx-auto">
+        <label for="searchFilter" class="text-white font-daysOne text-2xl mb-4"
+          >Выберите параметр поиска:</label
+        >
+        <select
+          id="searchFilter"
+          class="w-full h-[50px] border-2 border-[#D7D7D7] rounded-xl font-rubikR text-xl p-2 text-[#616161] bg-white mb-8"
+        >
+          <option value="all">Без фильтра</option>
+          <option value="fio">По ФИО</option>
+          <option value="number">По номеру машины</option>
+        </select>
+
+        <label
+          for="searchInput"
+          class="text-white font-daysOne text-2xl"
+        ></label>
+        <input
+          type="text"
+          id="searchInput"
+          class="w-full h-[50px] border-2 border-[#D7D7D7] rounded-xl font-rubikR text-xl p-5 text-[#616161] bg-white mb-8"
+        />
+
+        <div id="searchResults" class="grid grid-cols-1 gap-8 mt-8"></div>
+      </div>
     </main>
     <footer class="mt-12 relative">
       <img
@@ -217,6 +201,6 @@
         </div>
       </div>
     </footer>
-    <script src="./js/login.js"></script>
+    <script src="./js/app.js"></script>
   </body>
 </html>
