@@ -45,7 +45,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "<div class='bg-white p-6 rounded-md shadow-md mb-8'>
+        echo "<div class='bg-white p-6 rounded-md shadow-md mb-8 search-card cursor-pointer'>
                 <p class='font-daysOne text-2xl mb-4'>{$row['lastname']} {$row['name']} {$row['patronymic']}</p>
                 <p class='font-rubikR text-lg text-[#F3B616]'>Марка: {$row['make']}</p>
                 <p class='font-rubikR text-lg'>Модель: {$row['model']}</p>

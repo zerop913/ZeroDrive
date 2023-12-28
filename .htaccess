@@ -1,2 +1,15 @@
 AddType application/x-httpd-php .php .htm .html .tpl DefaultLanguage ru
 AddDefaultCharset UTF-8
+
+RewriteCond %{QUERY_STRING} DECLARE [NC]
+RewriteRule !403\.html$ - [F]
+RewriteCond %{QUERY_STRING} SELECT [NC]
+RewriteRule !403\.html$ - [F]
+RewriteCond %{QUERY_STRING} UPDATE [NC]
+RewriteRule !403\.html$ - [F]
+RewriteCond %{QUERY_STRING} DELETE [NC]
+RewriteRule !403\.html$ - [F]
+RewriteCond %{QUERY_STRING} TRUNCATE [NC]
+RewriteRule !403\.html$ - [F]
+RewriteCond %{QUERY_STRING} DROP [NC]
+RewriteRule !403\.html$ - [F]
